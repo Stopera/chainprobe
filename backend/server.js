@@ -11,6 +11,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://chainprobe.vercel.app',
+  'https://www.chainprobe.pro',
   process.env.FRONTEND_URL
 ].filter(Boolean); // Remove any undefined values
 

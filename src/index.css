@@ -177,8 +177,7 @@
   }
 
   .neo-card:hover {
-    box-shadow: 6px 6px 0 0 var(--color-shadow);
-    transform: translate(4px, 4px);
+    box-shadow: 10px 10px 0 0 var(--color-shadow);
   }
 
   .neo-btn {
@@ -187,12 +186,10 @@
   }
 
   .neo-btn:hover {
-    transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0 0 var(--color-bg);
+    box-shadow: 4px 4px 0 0 var(--color-bg);
   }
 
   .neo-btn-primary {
-    animation: pulse-shadow 2s infinite ease-in-out;
   }
 
   .terminal-text {
@@ -232,7 +229,6 @@
 
   .pipeline-item:hover {
     border-color: var(--color-accent);
-    transform: translateY(-4px);
     background-color: #222;
   }
   

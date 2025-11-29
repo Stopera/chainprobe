@@ -1,7 +1,7 @@
 # ChainProbe
 
 <div align="center">
-  <img src="/public/solanaLogoMark.svg" alt="ChainProbe Logo" width="80" />
+  <img src="/public/solana.png" alt="ChainProbe Logo" width="80" />
   <h3>Advanced Blockchain Forensic Analysis Platform for Solana</h3>
   <p>Investigate transactions, analyze wallet behavior, and detect suspicious patterns on the Solana blockchain</p>
 
