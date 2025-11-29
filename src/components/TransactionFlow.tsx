@@ -138,7 +138,7 @@ const CustomNode = ({ data }: { data: any }) => {
       </div>
       
       {/* Enhanced tooltip */}
-      <div className="absolute hidden group-hover:block z-50 bg-gray-900/90 backdrop-blur-md text-white p-4 rounded-lg shadow-xl -translate-y-full left-1/2 -translate-x-1/2 mb-2 min-w-[250px] border border-gray-700">
+      <div className="absolute hidden group-hover:block z-50 bg-gray-900/90 backdrop-blur-md text-white p-4 rounded-none shadow-xl -translate-y-full left-1/2 -translate-x-1/2 mb-2 min-w-[250px] border border-gray-700">
         <div className="text-sm font-medium mb-2 border-b border-gray-700 pb-2">
           {data.fullAddress || data.label}
         </div>
@@ -196,31 +196,31 @@ const FlowControls = ({
   <div className="absolute top-4 right-4 flex space-x-2 z-10">
     <button
       onClick={onZoomIn}
-      className="p-2 rounded-lg bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+      className="p-2 rounded-none bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-2 border-[#00FF99]"
       title="Zoom In"
     >
-      <RiZoomInLine className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+      <RiZoomInLine className="w-5 h-5 text-[#00FF99]" />
     </button>
     <button
       onClick={onZoomOut}
-      className="p-2 rounded-lg bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+      className="p-2 rounded-none bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-2 border-[#00FF99]"
       title="Zoom Out"
     >
-      <RiZoomOutLine className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+      <RiZoomOutLine className="w-5 h-5 text-[#00FF99]" />
     </button>
     <button
       onClick={onFitView}
-      className="p-2 rounded-lg bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+      className="p-2 rounded-none bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-2 border-[#00FF99]"
       title="Fit View"
     >
-      <RiFlowChart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+      <RiFlowChart className="w-5 h-5 text-[#00FF99]" />
     </button>
     <button
       onClick={onToggleFullscreen}
-      className="p-2 rounded-lg bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+      className="p-2 rounded-none bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-2 border-[#00FF99]"
       title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
     >
-      <RiFullscreenLine className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+      <RiFullscreenLine className="w-5 h-5 text-[#00FF99]" />
     </button>
   </div>
 );
@@ -255,7 +255,7 @@ function FlowVisualization({
   };
 
   return (
-    <div className="w-full h-[700px] relative bg-gray-900/30 backdrop-blur-sm rounded-lg">
+    <div className="w-full h-[700px] relative bg-gray-900/30 backdrop-blur-sm rounded-none">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -270,16 +270,16 @@ function FlowVisualization({
         style={{ background: 'transparent' }}
       >
         <Background variant={BackgroundVariant.Dots} color="#94a3b8" />
-        <Controls className="bg-white/90 dark:bg-gray-800/90 p-2 rounded-lg shadow-lg" />
+        <Controls className="bg-white/90 dark:bg-gray-800/90 p-2 rounded-none shadow-lg" />
         <MiniMap 
           nodeColor={node => {
-            if (node.data.isCenter) return '#9945FF';
+            if (node.data.isCenter) return '#FF0055';
             if (node.data.isHighRisk) return '#ef4444';
             if (node.data.isExchange) return '#f59e0b';
             return '#64748b';
           }}
           maskColor="rgba(0, 0, 0, 0.2)"
-          className="bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-lg"
+          className="bg-white/90 dark:bg-gray-800/90 rounded-none shadow-lg"
         />
         <FlowControls 
           onZoomIn={zoomIn}
@@ -316,13 +316,13 @@ const NodeDetailsPanel = ({ node, transactions, onClose }: {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="glass-panel rounded-xl p-6 mt-6"
+      className="neo-card p-6 mt-6"
     >
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg font-semibold">Address Details</h2>
         <button
           onClick={onClose}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-colors"
         >
           <RiCloseLine className="text-xl" />
         </button>
@@ -330,26 +330,26 @@ const NodeDetailsPanel = ({ node, transactions, onClose }: {
 
       {/* Overview Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="glass-card p-4">
+        <div className="neo-card p-4">
           <div className="text-sm text-gray-500 dark:text-gray-400">Total Volume</div>
-          <div className="text-lg font-semibold mt-1">{stats.totalVolume.toFixed(2)} SOL</div>
+          <div className="text-lg font-semibold mt-1 terminal-text">{stats.totalVolume.toFixed(2)} SOL</div>
         </div>
-        <div className="glass-card p-4">
+        <div className="neo-card p-4">
           <div className="text-sm text-gray-500 dark:text-gray-400">Outgoing</div>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-lg font-semibold">{stats.outgoing.length}</span>
+            <span className="text-lg font-semibold terminal-text">{stats.outgoing.length}</span>
             <span className="text-sm text-gray-500">txns</span>
-            <span className="text-sm text-solana-purple ml-2">
+            <span className="text-sm text-[#FF0055] ml-2 terminal-text">
               {stats.outgoing.reduce((sum, tx) => sum + tx.amount, 0).toFixed(2)} SOL
             </span>
           </div>
         </div>
-        <div className="glass-card p-4">
+        <div className="neo-card p-4">
           <div className="text-sm text-gray-500 dark:text-gray-400">Incoming</div>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-lg font-semibold">{stats.incoming.length}</span>
+            <span className="text-lg font-semibold terminal-text">{stats.incoming.length}</span>
             <span className="text-sm text-gray-500">txns</span>
-            <span className="text-sm text-solana-teal ml-2">
+            <span className="text-sm text-[#00FF99] ml-2 terminal-text">
               {stats.incoming.reduce((sum, tx) => sum + tx.amount, 0).toFixed(2)} SOL
             </span>
           </div>
@@ -363,20 +363,20 @@ const NodeDetailsPanel = ({ node, transactions, onClose }: {
           {nodeTransactions.slice(0, 5).map((tx, index) => (
             <div 
               key={index}
-              className="glass-card p-4 hover:shadow-lg transition-shadow"
+              className="neo-card p-4 hover:shadow-lg transition-shadow"
             >
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-2">
                   {tx.from === node.id ? (
-                    <RiArrowRightLine className="text-solana-purple" />
+                    <RiArrowRightLine className="text-[#FF0055]" />
                   ) : (
-                    <RiArrowLeftLine className="text-solana-teal" />
+                    <RiArrowLeftLine className="text-[#00FF99]" />
                   )}
                   <span className="text-sm font-medium">
                     {tx.from === node.id ? 'Outgoing' : 'Incoming'}
                   </span>
                 </div>
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-gray-500 terminal-text">
                   {format(new Date(tx.timestamp), 'MMM d, yyyy HH:mm')}
                 </span>
               </div>
@@ -384,17 +384,17 @@ const NodeDetailsPanel = ({ node, transactions, onClose }: {
               <div className="flex justify-between text-sm">
                 <div className="flex flex-col">
                   <span className="text-gray-500 text-xs">From</span>
-                  <span className="font-mono">{tx.from.slice(0, 8)}...{tx.from.slice(-6)}</span>
+                  <span className="terminal-text">{tx.from.slice(0, 8)}...{tx.from.slice(-6)}</span>
                 </div>
                 <div className="flex flex-col items-end">
                   <span className="text-gray-500 text-xs">To</span>
-                  <span className="font-mono">{tx.to.slice(0, 8)}...{tx.to.slice(-6)}</span>
+                  <span className="terminal-text">{tx.to.slice(0, 8)}...{tx.to.slice(-6)}</span>
                 </div>
               </div>
               
               <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                <span className={`text-sm font-medium ${
-                  tx.from === node.id ? 'text-solana-purple' : 'text-solana-teal'
+                <span className={`text-sm font-medium terminal-text ${
+                  tx.from === node.id ? 'text-[#FF0055]' : 'text-[#00FF99]'
                 }`}>
                   {tx.amount.toFixed(2)} SOL
                 </span>
@@ -402,7 +402,7 @@ const NodeDetailsPanel = ({ node, transactions, onClose }: {
                   href={`https://solscan.io/tx/${tx.signature}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-solana-purple hover:underline"
+                  className="text-xs text-[#00FF99] hover:underline"
                 >
                   View on Explorer
                 </a>
@@ -661,18 +661,18 @@ export default function TransactionFlow() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-panel rounded-xl overflow-hidden"
+            className="neo-card overflow-hidden"
           >
             <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Transaction Flow</h2>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 text-sm">
                   <span className="flex items-center">
-                    <div className="w-3 h-3 rounded-full bg-solana-purple mr-1" />
+                    <div className="w-3 h-3 rounded-none bg-[#FF0055] mr-1" />
                     Outgoing
                   </span>
                   <span className="flex items-center ml-4">
-                    <div className="w-3 h-3 rounded-full bg-solana-teal mr-1" />
+                    <div className="w-3 h-3 rounded-none bg-[#00FF99] mr-1" />
                     Incoming
                   </span>
                 </div>
@@ -704,8 +704,8 @@ export default function TransactionFlow() {
         {/* Empty State */}
         {!txLoading && !txError && !transactions && (
           <div className="text-center py-10">
-            <div className="glass-panel rounded-xl p-8">
-              <RiFlowChart className="text-solana-purple/50 text-6xl mx-auto mb-4" />
+            <div className="neo-card p-8">
+              <RiFlowChart className="text-[#00FF99]/50 text-6xl mx-auto mb-4" />
               <p className="text-gray-600 dark:text-gray-400">Enter a wallet address to visualize transaction flow</p>
             </div>
           </div>

@@ -280,18 +280,18 @@ export default function WalletAnalysis() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="glass-panel p-4 rounded-xl"
+                  className="neo-card p-4"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500">24h Transactions</p>
-                      <h3 className="text-2xl font-bold">{metrics.last24h.count}</h3>
+                      <h3 className="text-2xl font-bold terminal-text">{metrics.last24h.count}</h3>
                     </div>
-                    <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-full">
-                      <RiBarChartLine className="text-xl text-purple-500" />
+                    <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-none">
+                      <RiBarChartLine className="text-xl text-[#FF0055]" />
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 mt-2 terminal-text">
                     Volume: {metrics.last24h.volume.toFixed(2)} SOL
                   </p>
                 </motion.div>
@@ -300,18 +300,18 @@ export default function WalletAnalysis() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="glass-panel p-4 rounded-xl"
+                  className="neo-card p-4"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500">7d Transactions</p>
-                      <h3 className="text-2xl font-bold">{metrics.last7d.count}</h3>
+                      <h3 className="text-2xl font-bold terminal-text">{metrics.last7d.count}</h3>
                     </div>
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-full">
-                      <RiTimeLine className="text-xl text-blue-500" />
+                    <div className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-none">
+                      <RiTimeLine className="text-xl text-[#00FF99]" />
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 mt-2 terminal-text">
                     Volume: {metrics.last7d.volume.toFixed(2)} SOL
                   </p>
                 </motion.div>
@@ -320,18 +320,18 @@ export default function WalletAnalysis() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="glass-panel p-4 rounded-xl"
+                  className="neo-card p-4"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500">Avg Transaction</p>
-                      <h3 className="text-2xl font-bold">{metrics.avgTxValue.toFixed(2)} SOL</h3>
+                      <h3 className="text-2xl font-bold terminal-text">{metrics.avgTxValue.toFixed(2)} SOL</h3>
                     </div>
-                    <div className="p-3 bg-green-100 dark:bg-green-900/20 rounded-full">
-                      <RiPieChartLine className="text-xl text-green-500" />
+                    <div className="p-3 bg-green-100 dark:bg-green-900/20 rounded-none">
+                      <RiPieChartLine className="text-xl text-[#00FF99]" />
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 mt-2 terminal-text">
                     Based on {transactions?.length || 0} transactions
                   </p>
                 </motion.div>
@@ -340,20 +340,20 @@ export default function WalletAnalysis() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="glass-panel p-4 rounded-xl"
+                  className="neo-card p-4"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500">In/Out Ratio</p>
-                      <h3 className="text-2xl font-bold">
+                      <h3 className="text-2xl font-bold terminal-text">
                         {metrics.incomingCount}/{metrics.outgoingCount}
                       </h3>
                     </div>
-                    <div className="p-3 bg-teal-100 dark:bg-teal-900/20 rounded-full">
-                      <RiExchangeLine className="text-xl text-teal-500" />
+                    <div className="p-3 bg-teal-100 dark:bg-teal-900/20 rounded-none">
+                      <RiExchangeLine className="text-xl text-[#00FF99]" />
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 mt-2 terminal-text">
                     {((metrics.incomingCount / (metrics.incomingCount + metrics.outgoingCount)) * 100).toFixed(1)}% incoming
                   </p>
                 </motion.div>
@@ -369,15 +369,15 @@ export default function WalletAnalysis() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-panel rounded-xl p-6"
+                    className="neo-card p-6"
                   >
                     <div className="flex justify-between items-center mb-4">
                       <h2 className="text-lg font-semibold">Wallet Overview</h2>
                       <button
                         onClick={handleRefresh}
-                        className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-colors"
                       >
-                        <RiRefreshLine className="text-gray-500" />
+                        <RiRefreshLine className="text-[#00FF99]" />
                       </button>
                     </div>
                     <div className="space-y-4">
@@ -406,7 +406,7 @@ export default function WalletAnalysis() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-panel rounded-xl p-6"
+                    className="neo-card p-6"
                   >
                     <h2 className="text-lg font-semibold mb-4">Activity Over Time</h2>
                     <div className="h-[300px]">
@@ -444,14 +444,14 @@ export default function WalletAnalysis() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-panel rounded-xl p-6"
+                    className="neo-card p-6"
                   >
                     <div className="flex justify-between items-center mb-4">
                       <h2 className="text-lg font-semibold">Token Holdings</h2>
                       {tokenBalances && tokenBalances.length > 5 && (
                         <button
                           onClick={() => setShowAllTokens(!showAllTokens)}
-                          className="text-sm text-solana-purple hover:text-solana-teal transition-colors"
+                          className="text-sm text-[#00FF99] hover:text-[#FF0055] transition-colors"
                         >
                           {showAllTokens ? 'Show Less' : `Show All (${tokenBalances.length})`}
                         </button>
@@ -484,13 +484,13 @@ export default function WalletAnalysis() {
                               <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-3">
                                 <div>
                                   <p className="text-xs text-gray-500 dark:text-gray-400">Amount</p>
-                                  <p className="font-medium">{parseFloat(token.amount).toLocaleString(undefined, {
+                                  <p className="font-medium terminal-text">{parseFloat(token.amount).toLocaleString(undefined, {
                                     maximumFractionDigits: token.decimals > 4 ? 4 : token.decimals
                                   })}</p>
                                 </div>
                                 <div>
                                   <p className="text-xs text-gray-500 dark:text-gray-400">Value</p>
-                                  <p className="font-medium">${token.value_usd?.toLocaleString(undefined, {
+                                  <p className="font-medium terminal-text">${token.value_usd?.toLocaleString(undefined, {
                                     minimumFractionDigits: 2,
                                     maximumFractionDigits: 2
                                   }) || '0.00'}</p>
@@ -498,7 +498,7 @@ export default function WalletAnalysis() {
                                 {token.price_usd && (
                                   <div>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">Price</p>
-                                    <p className="font-medium">${token.price_usd.toLocaleString(undefined, {
+                                    <p className="font-medium terminal-text">${token.price_usd.toLocaleString(undefined, {
                                       minimumFractionDigits: 2,
                                       maximumFractionDigits: 6
                                     })}</p>
@@ -543,7 +543,7 @@ export default function WalletAnalysis() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="glass-panel rounded-xl"
+                    className="neo-card"
                   >
                     <div className="p-4 border-b border-gray-200/70 dark:border-gray-700/70">
                       <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Transactions</h2>
@@ -605,7 +605,7 @@ export default function WalletAnalysis() {
                       <div className="p-4 border-t border-gray-200/70 dark:border-gray-700/70">
                         <button
                           onClick={() => setShowAllTransactions(!showAllTransactions)}
-                          className="text-sm text-solana-purple hover:text-solana-teal transition-colors"
+                          className="text-sm text-[#00FF99] hover:text-[#FF0055] transition-colors"
                         >
                           {showAllTransactions ? 'Show Less' : `Show All (${transactions.length})`}
                         </button>
@@ -631,7 +631,7 @@ export default function WalletAnalysis() {
                     className="mt-6 space-y-4"
                   >
                     {riskAnalysis.sanctionChecks.isSanctioned && (
-                      <div className="glass-panel p-4 border-2 border-red-500/50">
+                      <div className="neo-card p-4 border-2 border-red-500/50">
                         <div className="flex items-center gap-2 text-red-500">
                           <RiAlertLine className="text-xl" />
                           <span className="font-semibold">Sanctioned Address</span>
@@ -643,12 +643,12 @@ export default function WalletAnalysis() {
                     )}
 
                     {riskAnalysis.approvalRisks.approvals.length > 0 && (
-                      <div className="glass-panel p-4">
+                      <div className="neo-card p-4">
                         <h3 className="text-sm font-medium mb-3">Risky Approvals</h3>
                         <div className="space-y-2">
                           {riskAnalysis.approvalRisks.approvals.map((approval, index) => (
                             <div key={index} className="flex justify-between items-center text-sm">
-                              <span className="font-mono">{approval.spender.slice(0, 8)}...</span>
+                              <span className="terminal-text">{approval.spender.slice(0, 8)}...</span>
                               <span className={`px-2 py-0.5 rounded-full text-xs ${
                                 approval.riskScore > 0.7 ? 'bg-red-500/20 text-red-500' :
                                 approval.riskScore > 0.3 ? 'bg-yellow-500/20 text-yellow-500' :
@@ -663,7 +663,7 @@ export default function WalletAnalysis() {
                     )}
 
                     {riskAnalysis.exposureRisk.riskExposures.length > 0 && (
-                      <div className="glass-panel p-4">
+                      <div className="neo-card p-4">
                         <h3 className="text-sm font-medium mb-3">Risk Exposures</h3>
                         <div className="space-y-2">
                           {riskAnalysis.exposureRisk.riskExposures.slice(0, 3).map((exposure, index) => (
@@ -694,14 +694,14 @@ export default function WalletAnalysis() {
 
                 {/* Transaction Details */}
                 {selectedTransaction && (detailsLoading ? (
-                  <div className="text-center glass-panel p-6 rounded-xl">
+                  <div className="text-center neo-card p-6">
                     <Spinner />
                   </div>
                 ) : transactionDetails ? (
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-panel overflow-hidden rounded-xl mt-6"
+                    className="neo-card overflow-hidden mt-6"
                   >
                     <div className="p-4 border-b border-gray-200/70 dark:border-gray-700/70">
                       <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Transaction Details</h2>
@@ -797,7 +797,7 @@ export default function WalletAnalysis() {
                     </a>
                   </motion.div>
                 ) : (
-                  <div className="text-center glass-panel p-6 rounded-xl">
+                  <div className="text-center neo-card p-6">
                     <p className="text-gray-500 dark:text-gray-400">No transaction details available</p>
                   </div>
                 ))}
@@ -810,7 +810,7 @@ export default function WalletAnalysis() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                className="glass-panel overflow-hidden rounded-xl mt-6"
+                className="neo-card overflow-hidden mt-6"
               >
                 <div className="p-4 border-b border-gray-200/70 dark:border-gray-700/70">
                   <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
@@ -845,8 +845,8 @@ export default function WalletAnalysis() {
         {/* Empty State */}
         {!isLoading && !error && !activity && (
           <div className="text-center py-10">
-            <div className="glass-panel rounded-xl p-8">
-              <RiWalletLine className="text-solana-purple/50 text-6xl mx-auto mb-4" />
+            <div className="neo-card p-8">
+              <RiWalletLine className="text-[#00FF99]/50 text-6xl mx-auto mb-4" />
               <p className="text-gray-600 dark:text-gray-400">Enter a wallet address to view analysis</p>
             </div>
           </div>

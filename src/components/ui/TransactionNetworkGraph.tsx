@@ -38,16 +38,17 @@ interface TransactionNetworkGraphProps {
 }
 
 export const TransactionNetworkGraph = ({
-  transactions,
-  centerAddress,
-  onNodeClick,
-  width = 800,
-  height = 600,
-  selectedNode
+   transactions,
+   centerAddress,
+   onNodeClick,
+   width = 800,
+   height = 600,
+   selectedNode
 }: TransactionNetworkGraphProps) => {
-  const [graphData, setGraphData] = useState<TransactionGraphData>({ nodes: [], links: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const fgRef = useRef<any>();
+   const [graphData, setGraphData] = useState<TransactionGraphData>({ nodes: [], links: [] });
+   const [isLoading, setIsLoading] = useState(true);
+   const [webGLError, setWebGLError] = useState(false);
+   const fgRef = useRef<any>();
 
   // Process transactions into graph data
   useEffect(() => {
@@ -91,58 +92,58 @@ export const TransactionNetworkGraph = ({
         transactionMap.set(tx.signature, true);
 
         // Link center address to transaction
-        links.push({
-          source: centerAddress,
-          target: tx.signature,
-          value: 1,
-          type: tx.type || 'UNKNOWN',
-          color: '#9945FF80' // Semi-transparent purple
-        });
+         links.push({
+           source: centerAddress,
+           target: tx.signature,
+           value: 1,
+           type: tx.type || 'UNKNOWN',
+           color: '#9945FF' // Purple
+         });
 
-        // If we have source or destination, add those nodes and links too
-        if (tx.source && tx.source !== centerAddress) {
-          if (!addressMap.has(tx.source)) {
-            nodes.push({
-              id: tx.source,
-              name: `${tx.source.slice(0, 6)}...${tx.source.slice(-4)}`,
-              val: 5,
-              color: '#00C2FF', // Solana blue
-              group: 2,
-              type: 'address'
-            });
-            addressMap.set(tx.source, true);
-          }
+         // If we have source or destination, add those nodes and links too
+         if (tx.source && tx.source !== centerAddress) {
+           if (!addressMap.has(tx.source)) {
+             nodes.push({
+               id: tx.source,
+               name: `${tx.source.slice(0, 6)}...${tx.source.slice(-4)}`,
+               val: 5,
+               color: '#00C2FF', // Solana blue
+               group: 2,
+               type: 'address'
+             });
+             addressMap.set(tx.source, true);
+           }
 
-          links.push({
-            source: tx.source,
-            target: tx.signature,
-            value: 1,
-            type: 'SOURCE',
-            color: '#00C2FF80' // Semi-transparent blue
-          });
-        }
+           links.push({
+             source: tx.source,
+             target: tx.signature,
+             value: 1,
+             type: 'SOURCE',
+             color: '#00C2FF' // Blue
+           });
+         }
 
-        if (tx.destination && tx.destination !== centerAddress) {
-          if (!addressMap.has(tx.destination)) {
-            nodes.push({
-              id: tx.destination,
-              name: `${tx.destination.slice(0, 6)}...${tx.destination.slice(-4)}`,
-              val: 5,
-              color: '#FF6B6B', // Solana pink
-              group: 3,
-              type: 'address'
-            });
-            addressMap.set(tx.destination, true);
-          }
+         if (tx.destination && tx.destination !== centerAddress) {
+           if (!addressMap.has(tx.destination)) {
+             nodes.push({
+               id: tx.destination,
+               name: `${tx.destination.slice(0, 6)}...${tx.destination.slice(-4)}`,
+               val: 5,
+               color: '#FF6B6B', // Solana pink
+               group: 3,
+               type: 'address'
+             });
+             addressMap.set(tx.destination, true);
+           }
 
-          links.push({
-            source: tx.signature,
-            target: tx.destination,
-            value: 1,
-            type: 'DESTINATION',
-            color: '#FF6B6B80' // Semi-transparent pink
-          });
-        }
+           links.push({
+             source: tx.signature,
+             target: tx.destination,
+             value: 1,
+             type: 'DESTINATION',
+             color: '#FF6B6B' // Pink
+           });
+         }
       }
     });
 
@@ -198,6 +199,17 @@ export const TransactionNetworkGraph = ({
     );
   }
 
+  if (webGLError) {
+    return (
+      <div className="flex justify-center items-center" style={{ width, height }}>
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-400 mb-2">WebGL is not supported in your browser</p>
+          <p className="text-xs text-gray-500 dark:text-gray-500">Try using a different browser or check your graphics drivers</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative">
       <ForceGraph3D
@@ -246,18 +258,24 @@ export const TransactionNetworkGraph = ({
         }}
         linkThreeObjectExtend={true}
         linkThreeObject={(link: any) => {
-          // Add arrow indicators on the links
-          if (link.source.id !== centerAddress && link.target.id !== centerAddress) {
-            const material = new THREE.MeshBasicMaterial({
-              color: link.color,
-              transparent: true,
-              opacity: 0.6
-            });
-            const geometry = new THREE.ConeGeometry(2, 5);
-            const mesh = new THREE.Mesh(geometry, material);
-            return mesh;
+          try {
+            // Add arrow indicators on the links
+            if (link.source.id !== centerAddress && link.target.id !== centerAddress) {
+              const material = new THREE.MeshBasicMaterial({
+                color: link.color,
+                transparent: true,
+                opacity: 0.6
+              });
+              const geometry = new THREE.ConeGeometry(2, 5);
+              const mesh = new THREE.Mesh(geometry, material);
+              return mesh;
+            }
+            return null;
+          } catch (error) {
+            console.error('Error creating link object:', error);
+            setWebGLError(true);
+            return null;
           }
-          return null;
         }}
         linkPositionUpdate={(obj, { start, end }) => {
           if (obj) {

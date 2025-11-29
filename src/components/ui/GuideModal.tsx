@@ -8,7 +8,7 @@ import { SiSolana } from 'react-icons/si';
 // Define the guide steps with additional tips
 const guideSteps = [
   {
-    title: "Welcome to Solana Forensics",
+    title: "Welcome to Chain Probe",
     content: "This tool helps you analyze and visualize on-chain activity on the Solana blockchain. Navigate through this guide to learn about the key features.",
     icon: <SiSolana className="text-solana-purple text-2xl" />,
     animation: "https://assets8.lottiefiles.com/packages/lf20_m6cuL6.json",

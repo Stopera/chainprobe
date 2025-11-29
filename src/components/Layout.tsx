@@ -29,26 +29,16 @@ const NavLink = ({ to, icon, label }: { to: string; icon: React.ReactNode; label
   return (
     <Link 
       to={to} 
-      className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 relative overflow-hidden ${
+      className={`flex items-center gap-2 px-4 py-3 rounded-none transition-all duration-300 relative overflow-hidden border-2 ${
         isActive 
-          ? 'text-white' 
-          : 'hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300'
+          ? 'bg-terminal-green text-black border-terminal-green shadow-[4px_4px_0px_0px_rgba(0,255,159,0.3)]' 
+          : 'border-border hover:border-terminal-green hover:shadow-[2px_2px_0px_0px_rgba(0,255,159,0.2)] terminal-text'
       }`}
     >
-      {isActive && (
-        <motion.div
-          layoutId="navBackground"
-          className="absolute inset-0 bg-gradient-to-r from-solana-purple/90 to-solana-teal/90 dark:from-solana-purple/80 dark:to-solana-teal/80 rounded-xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        />
-      )}
-      <div className={`relative z-10 text-xl ${isActive ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`}>
+      <div className={`text-xl ${isActive ? 'text-black' : 'text-terminal-green'}`}>
         {icon}
       </div>
-      <span className="relative z-10 font-medium">{label}</span>
+      <span className="font-bold mono">{label}</span>
     </Link>
   );
 };
@@ -73,34 +63,34 @@ export default function Layout() {
       <aside className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       } lg:translate-x-0`}>
-        <div className="h-full px-3 py-4 overflow-y-auto bg-card/50 backdrop-blur-md border-r border-border flex flex-col">
+        <div className="h-full px-3 py-4 overflow-y-auto neo-card border-r-4 border-border flex flex-col">
           {/* Logo */}
-          <div className="flex items-center gap-2 px-4 mb-8">
-            <SiSolana className="text-2xl text-solana-purple" />
-            <span className="text-xl font-bold">ChainProbe</span>
-          </div>
+          <Link to="/" className="flex items-center gap-2 px-4 mb-8 border-2 border-terminal-green rounded-none p-2 shadow-[4px_4px_0px_0px_rgba(0,255,159,0.4)] hover:shadow-[6px_6px_0px_0px_rgba(0,255,159,0.6)] transition-all cursor-pointer">
+            <SiSolana className="text-2xl text-terminal-green" />
+            <span className="text-xl font-bold mono terminal-text">ChainProbe</span>
+          </Link>
 
           {/* Navigation */}
           <div className="flex-1 space-y-8">
             <div>
-              <p className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-500 font-medium pl-4 mb-2">Dashboard</p>
+              <p className="text-xs uppercase tracking-wider text-accent-pink font-bold pl-4 mb-2 mono">Dashboard</p>
               <nav className="space-y-1 relative">
                 <NavLink to="/dashboard" icon={<RiDashboardLine />} label="Overview" />
               </nav>
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-500 font-medium pl-4 mb-2">Analysis Tools</p>
+              <p className="text-xs uppercase tracking-wider text-accent-pink font-bold pl-4 mb-2 mono">Analysis Tools</p>
               <nav className="space-y-1 relative">
                 <NavLink to="/transaction-flow" icon={<RiFlowChart />} label="Transaction Flow" />
-                <NavLink to="/wallet-analysis" icon={<RiWalletLine />} label="Wallet Analysis" />
+                {/* <NavLink to="/wallet-analysis" icon={<RiWalletLine />} label="Wallet Analysis" /> */}
                 <NavLink to="/transaction-clustering" icon={<RiGroupLine />} label="Clustering" />
                 <NavLink to="/pattern-analysis" icon={<RiRadarLine />} label="Pattern Analysis" />
               </nav>
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-500 font-medium pl-4 mb-2">Token Security</p>
+              <p className="text-xs uppercase tracking-wider text-accent-pink font-bold pl-4 mb-2 mono">Token Security</p>
               <nav className="space-y-1 relative">
                 <NavLink to="/token-security/analyzer" icon={<RiShieldCheckLine />} label="Token Analyzer" />
                 <NavLink to="/token-security/trending" icon={<RiRadarLine />} label="Trending Tokens" />
@@ -110,7 +100,7 @@ export default function Layout() {
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-500 font-medium pl-4 mb-2">Other Tools</p>
+              <p className="text-xs uppercase tracking-wider text-accent-pink font-bold pl-4 mb-2 mono">Other Tools</p>
               <nav className="space-y-1 relative">
                 <NavLink to="/entity-labels" icon={<RiUserSearchLine />} label="Entity Labels" />
                 <NavLink to="/smart-contract-scanner" icon={<RiShieldStarLine />} label="Contract Scanner" />
@@ -120,22 +110,22 @@ export default function Layout() {
           </div>
 
           {/* Settings and Help - Now at the bottom */}
-          <div className="pt-4 border-t border-border mt-4">
-            <p className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-500 font-medium pl-4 mb-2">Settings</p>
+          <div className="pt-4 border-t-4 border-border mt-4">
+            <p className="text-xs uppercase tracking-wider text-accent-pink font-bold pl-4 mb-2 mono">Knowledge Base</p>
             <div className="space-y-1 px-4">
-              <button
+              {/* <button
                 onClick={toggleDarkMode}
-                className="flex items-center gap-2 w-full px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300"
+                className="neo-btn w-full justify-start gap-2"
               >
                 {isDarkMode ? <RiSunLine className="text-xl" /> : <RiMoonLine className="text-xl" />}
-                <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-              </button>
+                <span className="mono font-bold">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
+              </button> */}
               <button
                 onClick={openGuide}
-                className="flex items-center gap-2 w-full px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300"
+                className="neo-btn w-full justify-start gap-2"
               >
                 <RiQuestionLine className="text-xl" />
-                <span>Guide</span>
+                <span className="mono font-bold">Guide</span>
               </button>
             </div>
           </div>
@@ -153,12 +143,12 @@ export default function Layout() {
       {/* Mobile menu button */}
       <button
         onClick={toggleMobileMenu}
-        className="fixed bottom-4 left-4 z-50 lg:hidden p-3 rounded-full bg-card/50 backdrop-blur-md border border-border"
+        className="fixed bottom-4 left-4 z-50 lg:hidden p-3 rounded-none neo-card border-2 border-terminal-green shadow-[4px_4px_0px_0px_rgba(0,255,159,0.4)] hover:shadow-[6px_6px_0px_0px_rgba(0,255,159,0.6)] transition-all"
       >
         {isMobileMenuOpen ? (
-          <RiCloseLine className="text-2xl" />
+          <RiCloseLine className="text-2xl text-terminal-green" />
         ) : (
-          <RiMenuLine className="text-2xl" />
+          <RiMenuLine className="text-2xl text-terminal-green" />
         )}
       </button>
 

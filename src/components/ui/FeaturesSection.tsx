@@ -3,7 +3,6 @@ import { FeatureCard } from './FeatureCard';
 import { Link } from 'react-router-dom';
 import { 
   RiFlowChart, 
-  RiWalletLine, 
   RiUserSearchLine, 
   RiGroupLine,
   RiRadarLine
@@ -20,19 +19,11 @@ export function FeaturesSection() {
       path: '/transaction-flow'
     },
     {
-      title: 'Wallet Analysis',
-      description: 'Deep-dive into wallet behavior, transaction patterns, and historical activity.',
-      icon: <RiWalletLine className="text-2xl" />,
-      color: 'purple' as const,
-      delay: 0.2,
-      path: '/wallet-analysis'
-    },
-    {
       title: 'Entity Recognition',
       description: 'Identify and label known entities like exchanges, protocols, and suspicious actors.',
       icon: <RiUserSearchLine className="text-2xl" />,
       color: 'teal' as const,
-      delay: 0.3,
+      delay: 0.2,
       path: '/entity-labels'
     },
     {
@@ -40,7 +31,7 @@ export function FeaturesSection() {
       description: 'Group related transactions to reveal hidden patterns and connections.',
       icon: <RiGroupLine className="text-2xl" />,
       color: 'amber' as const,
-      delay: 0.4,
+      delay: 0.3,
       path: '/transaction-clustering'
     },
     {
@@ -48,7 +39,7 @@ export function FeaturesSection() {
       description: 'Detect suspicious patterns like wash trading, circular transactions, and anomalies.',
       icon: <RiRadarLine className="text-2xl" />,
       color: 'green' as const, 
-      delay: 0.5,
+      delay: 0.4,
       path: '/pattern-analysis'
     }
   ];
@@ -61,7 +52,7 @@ export function FeaturesSection() {
       className="py-12"
     >
       {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 px-4">
         {features.map((feature, index) => (
           <Link key={index} to={feature.path} className="group">
             <FeatureCard

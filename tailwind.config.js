@@ -53,13 +53,18 @@ module.exports = {
         },
         solana: {
           purple: "#9945FF",
-          teal: "#14F195",
+          teal: "#00FF99",
           blue: "#00C2FF",
           cyan: "#19FB9B",
           lime: "#8BE53E",
-          pink: "#FF6B6B",
+          pink: "#FF0055",
           orange: "#FF8906",
           yellow: "#F9D649",
+        },
+        terminal: {
+          green: "#00FF99",
+          accent: "#FF0055",
+          border: "#008855",
         },
       },
       borderRadius: {

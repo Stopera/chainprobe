@@ -230,19 +230,24 @@ app.post('/api/webacy/contract_risk', async (req, res) => {
 
 // Helius API Proxy
 app.post('/api/helius/rpc', async (req, res) => {
+  console.log('Helius RPC request received:', req.body);
   try {
     if (!HELIUS_API_KEY) {
+      console.log('HELIUS_API_KEY is missing');
       return res.status(500).json({ error: 'Helius API key not configured' });
     }
 
+    console.log('Making axios request to Helius...');
     const response = await axios.post(
       `https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`,
       req.body
     );
     
+    console.log('Helius response received, sending back to client');
     res.json(response.data);
   } catch (error) {
     console.error('Helius RPC Error:', error.message);
+    console.error('Full error:', error.response?.data || error);
     res.status(error.response?.status || 500).json({
       error: 'Failed to execute RPC call',
       message: error.response?.data?.message || error.message

@@ -110,7 +110,7 @@ export default function PatternAnalysis() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="glass-panel p-6"
+        className="neo-card p-6"
       >
         <form onSubmit={handleSearch} className="space-y-4">
           <div className="grid grid-cols-1 gap-4">
@@ -150,7 +150,7 @@ export default function PatternAnalysis() {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="flex flex-col items-center justify-center py-20 glass-panel"
+          className="flex flex-col items-center justify-center py-20 neo-card"
         >
           <Spinner />
           <p className="mt-6 text-gray-400 flex items-center gap-2">
@@ -167,14 +167,14 @@ export default function PatternAnalysis() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-1"
           >
-            <div className="glass-panel overflow-hidden h-full">
+            <div className="neo-card overflow-hidden h-full">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                    <RiShieldLine className="text-solana-purple text-xl" />
-                    <span>Risk Assessment</span>
-                  </h3>
-                  <WebacyBranding size="md" />
+                <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                  <RiShieldLine className="text-[#00FF99] text-xl" />
+                  <span>Risk Assessment</span>
+                </h3>
+                <WebacyBranding size="md" />
                 </div>
                 
                 <div className="space-y-6">
@@ -256,7 +256,7 @@ export default function PatternAnalysis() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
-                            className="glass-card p-4"
+                            className="neo-card p-4"
                           >
                             <div className="flex justify-between items-center mb-2">
                               <span className="text-sm font-medium text-white">
@@ -300,9 +300,9 @@ export default function PatternAnalysis() {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.3, delay: 0.9 + (index * 0.1) }}
-                            className="flex items-start gap-3 glass-card p-3"
+                            className="flex items-start gap-3 neo-card p-3"
                           >
-                            <div className="bg-yellow-900/20 p-1.5 rounded-lg">
+                            <div className="bg-yellow-900/20 p-1.5 rounded-none">
                               <RiAlertLine className="text-yellow-500 text-sm" />
                             </div>
                             <span className="text-sm text-gray-300">{rec}</span>
@@ -323,10 +323,10 @@ export default function PatternAnalysis() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="lg:col-span-2"
           >
-            <div className="glass-panel overflow-hidden h-full">
+            <div className="neo-card overflow-hidden h-full">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                  <RiRadarLine className="text-solana-teal text-xl" />
+                  <RiRadarLine className="text-[#00FF99] text-xl" />
                   <span>Detected Patterns</span>
                 </h3>
                 <div className="space-y-5">
@@ -341,10 +341,10 @@ export default function PatternAnalysis() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 + index * 0.1 }}
-                          className={`glass-card p-5 border ${colors.border} ${colors.glow}`}
+                          className={`neo-card p-5 border ${colors.border} ${colors.glow}`}
                         >
                           <div className="flex gap-4">
-                            <div className={`p-3 rounded-xl ${colors.bg} self-start`}>
+                            <div className={`p-3 rounded-none ${colors.bg} self-start`}>
                               <Icon className={`w-6 h-6 ${colors.icon}`} />
                             </div>
                             <div className="flex-1">
@@ -387,12 +387,12 @@ export default function PatternAnalysis() {
                                       initial={{ opacity: 0 }}
                                       animate={{ opacity: 1 }}
                                       transition={{ delay: 0.7 + i * 0.05 }}
-                                      className={`text-sm p-2 rounded-lg ${colors.bg} border ${colors.border}`}
+                                      className={`text-sm p-2 rounded-none ${colors.bg} border ${colors.border}`}
                                     >
                                       <span className="block text-xs text-gray-400 mb-1">
                                         {key.replace(/_/g, ' ')}
                                       </span>
-                                      <span className={`font-medium ${colors.text}`}>
+                                      <span className={`font-medium terminal-text ${colors.text}`}>
                                         {typeof value === 'number' ? value.toLocaleString() : value.toString()}
                                       </span>
                                     </motion.div>
@@ -409,9 +409,9 @@ export default function PatternAnalysis() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.3 }}
-                      className="text-center py-12 glass-card flex flex-col items-center"
+                      className="text-center py-12 neo-card flex flex-col items-center"
                     >
-                      <div className="bg-blue-900/20 p-4 rounded-full mb-4">
+                      <div className="bg-blue-900/20 p-4 rounded-none mb-4">
                         <RiSearchEyeLine className="h-12 w-12 text-blue-500" />
                       </div>
                       <h3 className="mt-2 text-lg font-bold text-white">No Patterns Detected</h3>
@@ -431,8 +431,8 @@ export default function PatternAnalysis() {
           animate={{ opacity: 1 }}
           className="text-center py-10"
         >
-          <div className="glass-panel rounded-xl p-8">
-            <RiRadarLine className="text-solana-purple/50 text-6xl mx-auto mb-4" />
+          <div className="neo-card p-8">
+            <RiRadarLine className="text-[#00FF99]/50 text-6xl mx-auto mb-4" />
             <p className="text-gray-600 dark:text-gray-400">Enter a wallet address to analyze transaction patterns</p>
           </div>
         </motion.div>
