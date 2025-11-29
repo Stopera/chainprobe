@@ -7,7 +7,7 @@ const LandingPage = () => {
   const [contractCopied, setContractCopied] = useState(false);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('coming soon');
+    navigator.clipboard.writeText('CA: 9F3xxGwYKdX4eedh1CM39bwVWRmYj1UeXENeUp17pump');
     setContractCopied(true);
     setTimeout(() => setContractCopied(false), 2000);
   };
@@ -84,7 +84,7 @@ const LandingPage = () => {
           CHAIN<span style={{ color: 'var(--color-accent)' }}>PROBE</span>
         </h1>
         <p className="text-xl terminal-text mt-2 text-white">&gt;&gt; SOLANA FORENSICS ENGINE V4.1.2</p>
-        <p className="text-sm terminal-text mt-2 text-gray-400">contract address: <span className="cursor-pointer text-white hover:text-accent transition-colors" onClick={copyToClipboard} title="Click to copy">{contractCopied ? 'Copied!' : 'coming soon'}</span></p>
+        <p className="text-sm terminal-text mt-2 text-gray-400">contract address: <span className="cursor-pointer text-white hover:text-accent transition-colors" onClick={copyToClipboard} title="Click to copy">{contractCopied ? 'Copied!' : 'CA: 9F3xxGwYKdX4eedh1CM39bwVWRmYj1UeXENeUp17pump'}</span></p>
         <div className="h-1 w-24 mx-auto mt-4 terminal-text" style={{ backgroundColor: 'var(--color-text)' }}></div>
       </header>
 
