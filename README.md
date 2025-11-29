@@ -6,8 +6,8 @@
   <p>Investigate transactions, analyze wallet behavior, and detect suspicious patterns on the Solana blockchain</p>
 
   [![Website](https://img.shields.io/badge/Website-chainprobe.vercel.app-blue?style=for-the-badge&logo=vercel)](https://chainprobe.vercel.app)
-  [![Demo Video](https://img.shields.io/badge/Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://youtu.be/vC2G1Ucv6W8)
-  [![Write-up](https://img.shields.io/badge/Article-dev.to-black?style=for-the-badge&logo=dev.to)](https://dev.to/geoffrey_kimani_18776c699/chainprobe-2h88)
+  <!-- [![Demo Video](https://img.shields.io/badge/Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://youtu.be/vC2G1Ucv6W8) -->
+  <!-- [![Write-up](https://img.shields.io/badge/Article-dev.to-black?style=for-the-badge&logo=dev.to)](https://dev.to/geoffrey_kimani_18776c699/chainprobe-2h88) -->
 
   ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
   ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
@@ -370,5 +370,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   </p>
   
   [![GitHub stars](https://img.shields.io/github/stars/ge0frey/chainprobe?style=social)](https://github.com/ge0frey/chainprobe/stargazers)
-  [![Twitter Follow](https://img.shields.io/twitter/follow/your_twitter?style=social)](https://twitter.com/your_twitter)
+  <!-- [![Twitter Follow](https://img.shields.io/twitter/follow/your_twitter?style=social)](https://twitter.com/your_twitter) -->
 </div>
